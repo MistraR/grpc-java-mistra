@@ -19,7 +19,7 @@ import java.io.IOException;
  */
 public class MistraServer {
 
-    private int port = 8851;
+    private int port = 8001;
     private Server server;
 
     private void start() throws IOException {
@@ -28,7 +28,7 @@ public class MistraServer {
                 .build()
                 .start();
 
-        System.out.println("service start...");
+        System.out.println("------------------- 服务端服务已开启，等待客户端访问 -------------------");
 
         Runtime.getRuntime().addShutdownHook(new Thread() {
             @Override
@@ -65,8 +65,8 @@ public class MistraServer {
         @Override
         public void sayHello(MistraRequest mistraRequest, StreamObserver<MistraResponse> responseObserver) {
             // 具体其他丰富的业务实现代码
-            System.err.println("service:" + mistraRequest.getName());
-            MistraResponse reply = MistraResponse.newBuilder().setMessage(("Hello: " + mistraRequest.getName())).build();
+            System.err.println("server:" + mistraRequest.getName());
+            MistraResponse reply = MistraResponse.newBuilder().setMessage(("响应信息: " + mistraRequest.getName())).build();
             responseObserver.onNext(reply);
             responseObserver.onCompleted();
         }
