@@ -55,7 +55,9 @@ public class MistraServer {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         final MistraServer server = new MistraServer();
+        //启动服务
         server.start();
+        //服务一直在线，不关闭
         server.blockUntilShutdown();
     }
 
