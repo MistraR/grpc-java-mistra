@@ -47,29 +47,24 @@ public class MistraServer {
         }
     }
 
-
     private void blockUntilShutdown() throws InterruptedException {
         if (server != null) {
             server.awaitTermination();
         }
     }
 
-
     public static void main(String[] args) throws IOException, InterruptedException {
-
         final MistraServer server = new MistraServer();
         server.start();
         server.blockUntilShutdown();
     }
 
-
-    // 实现 定义一个实现服务接口的类
+    // 定义一个实现服务接口的类
     private class MistraHelloWorldImpl extends MistraServiceGrpc.MistraServiceImplBase {
 
         @Override
         public void sayHello(MistraRequest mistraRequest, StreamObserver<MistraResponse> responseObserver) {
             // 具体其他丰富的业务实现代码
-
             System.err.println("service:" + mistraRequest.getName());
             MistraResponse reply = MistraResponse.newBuilder().setMessage(("Hello: " + mistraRequest.getName())).build();
             responseObserver.onNext(reply);

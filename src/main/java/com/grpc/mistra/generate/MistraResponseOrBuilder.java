@@ -4,16 +4,17 @@
 package com.grpc.mistra.generate;
 
 public interface MistraResponseOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:mistra.MistraResponse)
-    com.google.protobuf.MessageOrBuilder {
+        // @@protoc_insertion_point(interface_extends:mistra.MistraResponse)
+        com.google.protobuf.MessageOrBuilder {
 
-  /**
-   * <code>string message = 1;</code>
-   */
-  String getMessage();
-  /**
-   * <code>string message = 1;</code>
-   */
-  com.google.protobuf.ByteString
-      getMessageBytes();
+    /**
+     * <code>string message = 1;</code>
+     */
+    String getMessage();
+
+    /**
+     * <code>string message = 1;</code>
+     */
+    com.google.protobuf.ByteString
+    getMessageBytes();
 }

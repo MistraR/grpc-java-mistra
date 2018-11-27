@@ -20,21 +20,19 @@ public class MistraClient {
     private final ManagedChannel channel;
     private final MistraServiceGrpc.MistraServiceBlockingStub blockingStub;
 
-
-    public MistraClient(String host,int port){
-        channel = ManagedChannelBuilder.forAddress(host,port)
+    public MistraClient(String host, int port) {
+        channel = ManagedChannelBuilder.forAddress(host, port)
                 .usePlaintext(true)
                 .build();
 
         blockingStub = MistraServiceGrpc.newBlockingStub(channel);
     }
 
-
     public void shutdown() throws InterruptedException {
         channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
     }
 
-    public  void greet(String name){
+    public void greet(String name) {
         MistraRequest request = MistraRequest.newBuilder().setName(name).build();
         MistraResponse response = blockingStub.sayHello(request);
         System.out.println(response.getMessage());
@@ -43,8 +41,8 @@ public class MistraClient {
 
     public static void main(String[] args) throws InterruptedException {
         MistraClient client = new MistraClient("127.0.0.1", 8851);
-        for(int i=0;i<5;i++){
-            client.greet("world:"+i);
+        for (int i = 0; i < 5; i++) {
+            client.greet("world:" + i);
         }
     }
 }
