@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+//生成java代码的package
+option java_package = "com.grpc.mistra.generate";
+//创建的javaBean的文件名
+option java_outer_classname = "MistraProto";
+// 可以生成rpc接口
+//option java_generic_services = true;
+
+package mistra;
+
+//声明一个服务名称
+service MistraService {
+  //请求参数MistraRequest   响应参数MistraResponse
+  rpc SayHello (MistraRequest) returns (MistraResponse);
+}
+
+//请求
+message MistraRequest {
+  string name = 1;
+}
+
+//响应
+message MistraResponse {
+  string message = 1;
+}
